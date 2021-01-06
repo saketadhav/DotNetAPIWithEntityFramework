@@ -8,6 +8,7 @@ namespace Application.Interfaces
     public interface IApplicationDbContext
     {
         DbSet<Client> Clients { get; set; }
+        DbSet<Fund> Funds { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

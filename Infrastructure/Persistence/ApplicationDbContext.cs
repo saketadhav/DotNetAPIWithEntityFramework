@@ -27,6 +27,8 @@ namespace Infrastructure.Persistence
 
         public DbSet<Client> Clients { get; set; }
 
+        public DbSet<Fund> Funds { get; set; }
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (EntityEntry<AuditableEntity> entry in ChangeTracker.Entries<AuditableEntity>())
