@@ -1,5 +1,6 @@
 ﻿using Application.Clients.Queries.ExportClients;
 using Application.Common.Interfaces;
+using Application.Funds.Queries.ExportFunds;
 using Application.Interfaces;
 using Infrastructure.Files;
 using Infrastructure.Persistence;
@@ -27,6 +28,7 @@ namespace Infrastructure
 
             services.AddTransient<IDateTimeService, DateTimeService>();
             services.AddTransient<ICsvFileBuilder<ClientRecord>, CsvFileBuilder<ClientRecord>>();
+            services.AddTransient<ICsvFileBuilder<FundRecord>, CsvFileBuilder<FundRecord>>();
 
             return services;
 

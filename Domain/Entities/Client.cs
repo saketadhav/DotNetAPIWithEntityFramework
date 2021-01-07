@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using System.Collections.Generic;
 
 namespace Domain.Entities
 {
@@ -6,6 +7,6 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public List<Fund> Funds {get; set;}
     }
 }

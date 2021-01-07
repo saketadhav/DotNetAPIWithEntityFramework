@@ -1,6 +1,6 @@
 ﻿using Application.Funds.Queries.GetFunds;
 using Application.Funds.Queries.GetFundById;
-using Application.Funds.Commands.GetFundById;
+using Application.Funds.Queries.ExportFunds;
 using Application.Funds.Commands.CreateFund;
 using Application.Funds.Commands.UpdateFund;
 using Application.Funds.Commands.DeleteFund;
@@ -24,6 +24,13 @@ namespace Service.Controllers
             GetFundByIdQuery query = new GetFundByIdQuery();
             query.Id = id;
             return await Mediator.Send(query);
+        }
+
+        [HttpGet("csv")]
+        public async Task<FileResult> Export()
+        {
+            var vm = await Mediator.Send(new ExportFundsQuery());
+            return File(vm.Content, vm.ContextType, vm.FileName);
         }
 
         [HttpPost]

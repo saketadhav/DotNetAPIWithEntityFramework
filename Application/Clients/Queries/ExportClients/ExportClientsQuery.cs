@@ -34,7 +34,7 @@ namespace Application.Clients.Queries.ExportClients
                 .ProjectTo<ClientRecord>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            vm.Content = _fileBuilder.BuildFile(records);
+            vm.Content = _fileBuilder.BuildFile(records, "clientrecord");
             vm.ContextType = "text/csv";
             vm.FileName = "Client.csv";
 

@@ -4,6 +4,6 @@ namespace Application.Common.Interfaces
 {
     public interface ICsvFileBuilder<T>
     {
-        byte[] BuildFile(IEnumerable<T> records);
+        byte[] BuildFile(IEnumerable<T> records, string type);
     }
 }
