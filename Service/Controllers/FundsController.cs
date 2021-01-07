@@ -1,5 +1,5 @@
 ﻿using Application.Funds.Queries.GetFunds;
-using Application.Funds.Queries.GetFundById;
+using Application.Funds.Queries.GetFundsByClientId;
 using Application.Funds.Queries.ExportFunds;
 using Application.Funds.Commands.CreateFund;
 using Application.Funds.Commands.UpdateFund;
@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Service.Controllers
 {
+    [ApiController]
     public class FundsController : ApiControllerBase
     {
         [HttpGet]
@@ -18,11 +19,12 @@ namespace Service.Controllers
             return await Mediator.Send(new GetFundsQuery());
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<FundDto>> GetFundById(int id)
+        [HttpGet]
+        [Route("GetFundsByClientId")]
+        public async Task<ActionResult<List<FundDto>>> GetFundsByClientId([FromQuery]int clientId)
         {
-            GetFundByIdQuery query = new GetFundByIdQuery();
-            query.Id = id;
+            GetFundsByClientIdQuery query = new GetFundsByClientIdQuery();
+            query.ClientId = clientId;
             return await Mediator.Send(query);
         }
 

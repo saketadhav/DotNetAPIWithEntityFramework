@@ -9,7 +9,6 @@ namespace Application.Interfaces
     {
         DbSet<Client> Clients { get; set; }
         DbSet<Fund> Funds { get; set; }
-
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

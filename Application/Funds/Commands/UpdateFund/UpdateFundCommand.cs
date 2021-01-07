@@ -15,6 +15,7 @@ namespace Application.Funds.Commands.UpdateFund
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int ClientId { get; set; }
     }
 
     public class UpdateFundCommandHandler : IRequestHandler<UpdateFundCommand>
@@ -36,6 +37,7 @@ namespace Application.Funds.Commands.UpdateFund
             }
 
             entity.Name = request.Name;
+            entity.ClientId = request.ClientId;
 
             await _context.SaveChangesAsync(cancellationToken);
 

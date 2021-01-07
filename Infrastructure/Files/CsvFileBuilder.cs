@@ -16,12 +16,12 @@ namespace Infrastructure.Files
             using (var streamWriter = new StreamWriter(memoryStream))
             {
                 using var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture);
+                
                 if (recordType == "clientrecord")
                 {
                     csvWriter.Configuration.RegisterClassMap<ClientRecordMap>();
-
                 }
-                else if(recordType == "fundrecord")
+                else if (recordType == "fundrecord")
                 {
                     csvWriter.Configuration.RegisterClassMap<FundRecordMap>();
                 }

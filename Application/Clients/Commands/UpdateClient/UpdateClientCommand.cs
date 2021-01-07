@@ -1,7 +1,12 @@
 ﻿using Application.Common.Exceptions;
+using Application.Funds.Queries.GetFunds;
 using Application.Interfaces;
+using AutoMapper;
 using Domain.Entities;
 using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,10 +21,12 @@ namespace Application.Clients.Commands.UpdateClient
     public class UpdateClientCommandHandler : IRequestHandler<UpdateClientCommand>
     {
         private readonly IApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public UpdateClientCommandHandler(IApplicationDbContext context)
+        public UpdateClientCommandHandler(IApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
