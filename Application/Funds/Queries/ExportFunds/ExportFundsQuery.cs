@@ -39,7 +39,7 @@ namespace Application.Funds.Queries.ExportFunds
                 .ProjectTo<FundRecord>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            vm.Content = _fileBuilder.BuildFile(records, "fundrecord");
+            vm.Content = _fileBuilder.BuildFile(records);
             vm.ContextType = "text/csv";
             vm.FileName = "Fund.csv";
 

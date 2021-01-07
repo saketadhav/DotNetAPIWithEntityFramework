@@ -10,18 +10,18 @@ namespace Infrastructure.Files
 {
     public class CsvFileBuilder<T> : ICsvFileBuilder<T>
     {
-        public byte[] BuildFile(IEnumerable<T> records, string recordType)
+        public byte[] BuildFile(IEnumerable<T> records)
         {
             using var memoryStream = new MemoryStream();
             using (var streamWriter = new StreamWriter(memoryStream))
             {
                 using var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture);
-                
-                if (recordType == "clientrecord")
+                Type type = records.GetType().GetGenericArguments()[0];
+                if (type.Name.ToLower() == "clientrecord")
                 {
                     csvWriter.Configuration.RegisterClassMap<ClientRecordMap>();
                 }
-                else if (recordType == "fundrecord")
+                else if (type.Name.ToLower() == "fundrecord")
                 {
                     csvWriter.Configuration.RegisterClassMap<FundRecordMap>();
                 }
